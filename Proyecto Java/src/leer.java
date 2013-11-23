@@ -11,17 +11,14 @@ import java.util.Map;
 
 
 public class leer {
-	static Map<Integer,alumno> mapalumno= new HashMap<Integer,alumno>();
-	Map<Integer,profesor> mapprofesor= new HashMap<Integer,profesor>();
 	Map<Integer,materia> mapmateria= new HashMap<Integer,materia>();
+	static Map<Integer,persona> mappersona= new HashMap<Integer,persona>();
 	List <String> listaejec = new ArrayList <String>();
 
 	
-	public static Map<Integer, alumno> getalumnos(){
-		return mapalumno;
-	}
-	public Map<Integer, profesor> getprofesores(){
-		return mapprofesor;
+	
+	public static Map<Integer, persona> getpersonas(){
+		return mappersona;
 	}
 	public Map<Integer, materia> getmaterias(){
 		return mapmateria;
@@ -189,7 +186,7 @@ public class leer {
 					}
 					else{
 						doceimp=linea;
-						mapprofesor.put(id, new profesor(nombre, id, fechanac,tipo,dep,horasig,doceimp));
+						mappersona.put(id, new profesor(nombre, id, fechanac,tipo,dep,horasig,doceimp));
 						lineas=-1;
 					}
 					break; 
@@ -198,7 +195,7 @@ public class leer {
 				{
 					if(tipo.equals(cad)){
 						docerec=linea;
-						mapalumno.put(id,new alumno(nombre,id,fechanac,tipo,fechaing,nota,aprob,docerec));
+						mappersona.put(id,new alumno(nombre,id,fechanac,tipo,fechaing,nota,aprob,docerec));
 						lineas=-1;
 					}
 					break;
