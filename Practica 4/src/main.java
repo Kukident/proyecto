@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-//jajajjajaja
+
 public class main {
 
 	public static void main(String[] args) throws ParseException, IOException {
