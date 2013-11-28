@@ -29,7 +29,11 @@ public class separar {
 		return separados;
 	}
 	public static String[] comillas(String str){
-		separados=str.split("["+ '"' +"]");//Divide el string por los espacios
+		separados=str.split("["+ '"' +"]");//Divide el string por las comillas
+		return separados;
+	}
+	public static String[] barras(String str){
+		separados=str.split("["+ '/' +"]");//Divide el string por las barras
 		return separados;
 	}
 }

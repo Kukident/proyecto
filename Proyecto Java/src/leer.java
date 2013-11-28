@@ -12,12 +12,12 @@ import java.util.Map;
 
 public class leer {
 	Map<Integer,materia> mapmateria= new HashMap<Integer,materia>();
-	static Map<Integer,persona> mappersona= new HashMap<Integer,persona>();
+	Map<Integer,persona> mappersona= new HashMap<Integer,persona>();
 	List <String> listaejec = new ArrayList <String>();
 
 	
 	
-	public static Map<Integer, persona> getpersonas(){
+	public Map<Integer, persona> getpersonas(){
 		return mappersona;
 	}
 	public Map<Integer, materia> getmaterias(){

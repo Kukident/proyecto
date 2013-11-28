@@ -8,6 +8,7 @@ public class pruebas {
 		String[] cad1;
 		int i=1;
 		cad1=cad.split("["+ ' ' +"]");
+		System.out.println(cad1[0].equals("alumno"));
 		if(cad1[0].equals("alumno")){
 			System.out.println("yes");	
 		}
