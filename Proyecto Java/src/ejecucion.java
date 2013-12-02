@@ -15,7 +15,7 @@ public class ejecucion {
 		str1=separar.espacios(str[0]);
 		str2=separar.espacios(str[2]);
 
-		if((str1[1].equals("alumno"))&&((avisos.fechaingreso(str2[1],"no"))||(avisos.notamedia(Integer.parseInt(str2[3].trim()),"yes")))){
+		if(str1[1].equals("alumno")&&(avisos.fechaingreso(str2[1])&avisos.notamedia(Integer.parseInt(str2[3].trim())))){
 			mapa.put(getid(mapa),new alumno(str[1], getid(mapa),str2[1],str1[1],str2[2],Integer.parseInt(str2[3].trim()),"", ""));
 		}
 		if(str1[1].equals("profesor")){
