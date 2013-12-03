@@ -19,7 +19,11 @@ public class main {
 		System.out.println(leer.getpersonas().keySet());
 		ejecucion.insertapersona((separar.comillas(leer.getejecucion().get(1))), leer.getpersonas());
 		System.out.println(leer.getpersonas().keySet());
-		//System.out.println(((profesor) leer.getpersonas().get(5)).getdep());
+		
+		System.out.println(((profesor) leer.getpersonas().get(4)).getdoceimp());
+		ejecucion.asignarcargadocente((separar.espacios(leer.getejecucion().get(2))), leer.getpersonas(), leer.getmaterias());
+		System.out.println(leer.getejecucion().get(2));
+		System.out.println(((profesor) leer.getpersonas().get(4)).getdoceimp());
 
 		//System.out.println(leer.getpersonas().get(0).getnombre());
 	}
