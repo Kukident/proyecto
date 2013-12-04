@@ -53,10 +53,10 @@ public class ejecucion {
 		}
 	}
 	public void matricularalumno(String[] str, Map<Integer, persona> personas, Map <Integer,materia> materias){
-		int idp,idm,idg;
+		int idp,idm;
 		idp=Integer.parseInt(str[1]);
 		idm=Integer.parseInt(str[2]);
-		if (avisos.alumnoinex(idp,personas)&avisos.materiainex(idm, materias, str[3])&avisos.prerequisitos(idp,personas,idm)&/*avisos.yamatriculado(idp,personas,idm)&*/avisos.imp()){
+		if (((avisos.alumnoinex(idp,personas)&avisos.materiainex(idm, materias, str[3]))&&(avisos.prerequisitos(idp,personas,idm,materias)&avisos.yamatriculado(idp,personas,idm)))&avisos.imp()){
 			if (((alumno) personas.get(idp)).getdocerec().get(0).equals("")){//Si la lista esta vacia (tiene un espacio en blanco en la primera posicion), se sobreescribe
 				((alumno) personas.get(idp)).getdocerec().set(0,str[2]+" "+str[3]);
 			}

@@ -98,7 +98,7 @@ public class avisos {
 		avisolinea=avisolinea.concat("Materia inexistente ");
 		return false;
 	}
-	
+
 	public boolean alumnoinex(Integer idp, Map<Integer, persona> personas){
 		List<Integer> ids = new ArrayList<Integer>(personas.keySet());	
 		int size=ids.size();
@@ -116,14 +116,29 @@ public class avisos {
 		avisolinea=avisolinea.concat("Alumno inexistente ");
 		return false;
 	}
-	public boolean prerequisitos(Integer idp, Map<Integer, persona> personas, Integer idm){
-		int size=((alumno) personas.get(idp)).getaprob().size();
-		int j=0;
-		while (j<size){
-			if (Integer.parseInt(((alumno) personas.get(idp)).getaprob().get(j).trim())==idm){
-				return true;
+	public boolean prerequisitos(Integer idp, Map<Integer, persona> personas, Integer idm,Map<Integer, materia> materias ){
+		int sizem=((alumno) personas.get(idp)).getaprob().size();
+		int sizerequi=materias.get(idm).getprerequi().size();
+		int j=0,i=0;
+		if (!((alumno) personas.get(idp)).getaprob().get(0).equals("")){
+			while (i<sizerequi){
+				if (materias.get(idm).getprerequi().get(0).equals("")){
+					return true;
+				}
+				else{
+					while (j<sizem){
+						if (Integer.parseInt(((alumno) personas.get(idp)).getaprob().get(j).trim())==Integer.parseInt(materias.get(idm).getprerequi().get(i).trim())){
+							return true;
+						}
+						j++;
+					}
+				}
+				j=0;
+				i++;
 			}
-			j++;
+		}
+		if (materias.get(idm).getprerequi().get(0).equals("")){
+			return true;
 		}
 		if (avisolinea.equals("Materia inexistente ")||avisolinea.equals("Alumno inexistente Materia inexistente ")){
 			return false;
@@ -133,16 +148,18 @@ public class avisos {
 		}
 		return false;
 	}
-	/*public boolean yamatriculado(Integer idp, Map<Integer, persona> personas, Integer idm){
+
+	public boolean yamatriculado(Integer idp, Map<Integer, persona> personas, Integer idm){
 		int size=((alumno) personas.get(idp)).getdocerec().size();
 		int j=0;
-		while (j<size){
-			if (Integer.parseInt(((alumno) personas.get(idp)).getdocerec().get(j).trim())==idm){
-				return true;
+		if (!((alumno) personas.get(idp)).getdocerec().get(0).equals("")){
+			while (j<size){
+				if (Integer.parseInt(separar.espacios(((alumno) personas.get(idp)).getdocerec().get(j).trim())[0])==idm){
+					avisolinea=avisolinea.concat("Ya es alumno de la materia indicada ");
+					return false;				}
+				j++;
 			}
-			j++;
 		}
-			avisolinea=avisolinea.concat("Ya es alumno de la materia indicada  ");
-		return false;
-	}*/
+		return true;
+	}
 }
