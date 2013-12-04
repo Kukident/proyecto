@@ -19,11 +19,18 @@ public class main {
 		System.out.println(leer.getpersonas().keySet());
 		ejecucion.insertapersona((separar.comillas(leer.getejecucion().get(1))), leer.getpersonas());
 		System.out.println(leer.getpersonas().keySet());
-		
+		//Asignar carga docente
+		System.out.println("Asignar cargadocente");
 		System.out.println(((profesor) leer.getpersonas().get(4)).getdoceimp());
 		ejecucion.asignarcargadocente((separar.espacios(leer.getejecucion().get(2))), leer.getpersonas(), leer.getmaterias());
 		System.out.println(leer.getejecucion().get(2));
 		System.out.println(((profesor) leer.getpersonas().get(4)).getdoceimp());
+		//Matricular Alumno
+		System.out.println("Matricular alumno");
+		System.out.println(((alumno) leer.getpersonas().get(9)).getdocerec());
+		ejecucion.matricularalumno((separar.espacios(leer.getejecucion().get(3))), leer.getpersonas(), leer.getmaterias());
+		System.out.println(((alumno) leer.getpersonas().get(9)).getdocerec());
+
 
 		//System.out.println(leer.getpersonas().get(0).getnombre());
 	}

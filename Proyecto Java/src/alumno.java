@@ -51,4 +51,7 @@ public class alumno extends persona {
 	public List<String> getdocerec(){
 		return listadocrec;
 	}
+	public void putdocrec(String str1, String str2){
+		this.listadocrec.add(str1+" "+str2);	
+	}
 }
