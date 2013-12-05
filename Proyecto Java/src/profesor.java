@@ -8,6 +8,7 @@ public class profesor extends persona {
 	int horasig; //Horas asignables
 	String doceimp; //Lista de docencia impartida
 	List <String> listadodoceimp= new ArrayList<String>();
+	static 	List <String> listadodoce= new ArrayList<String>();
 	separar separar=new separar();
 
 
@@ -21,6 +22,7 @@ public class profesor extends persona {
 		this.doceimp=doceimp;
 
 		separar.puntosycomas(doceimp,listadodoceimp);
+		separar.puntosycomas(doceimp,listadodoce);
 	}
 
 	public String getdep(){

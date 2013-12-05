@@ -1,6 +1,6 @@
 import java.io.IOException;
 import java.text.ParseException;
-//Faltan avisos para solape y grupo ya asignado
+//Faltan avisos para solape
 
 public class main {
 
@@ -30,6 +30,18 @@ public class main {
 		System.out.println(((alumno) leer.getpersonas().get(9)).getdocerec());
 		ejecucion.matricularalumno((separar.espacios(leer.getejecucion().get(3))), leer.getpersonas(), leer.getmaterias());
 		System.out.println(((alumno) leer.getpersonas().get(9)).getdocerec());
+		//Evaluar materia
+		System.out.println("Evaluar materia");
+		System.out.println(((alumno) leer.getpersonas().get(2)).getdocerec());
+		//ejecucion.evaluarmateria((separar.espacios(leer.getejecucion().get(4))), leer.getpersonas(), leer.getmaterias());
+		System.out.println(((alumno) leer.getpersonas().get(2)).getdocerec());
+		System.out.println(((alumno) leer.getpersonas().get(2)).getaprob());
+		//Obtener calendario
+		System.out.println("Obtener calendario");
+		ejecucion.obtenercalendario((separar.espacios(leer.getejecucion().get(5))), leer.getpersonas(), leer.getmaterias());
+
+
+
 
 
 		//System.out.println(leer.getpersonas().get(0).getnombre());

@@ -54,4 +54,7 @@ public class alumno extends persona {
 	public void putdocrec(String str1, String str2){
 		this.listadocrec.add(str1+" "+str2);	
 	}
+	public void putnota(double nota){
+		this.nota=nota;
+	}
 }

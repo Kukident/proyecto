@@ -14,6 +14,7 @@ public class leer {
 	Map<Integer,materia> mapmateria= new HashMap<Integer,materia>();
 	Map<Integer,persona> mappersona= new HashMap<Integer,persona>();
 	List <String> listaejec = new ArrayList <String>();
+	List <String> notas = new ArrayList <String>();
 
 	
 	
@@ -26,6 +27,9 @@ public class leer {
 
 	public List<String> getejecucion(){
 		return listaejec;
+	}
+	public List<String> getnotas(){
+		return notas;
 	}
 
 	public void materias() throws ParseException, IOException{
@@ -202,6 +206,25 @@ public class leer {
 				}
 				}
 				lineas++;
+			}
+			buf.close();//Cerramos el buffer y el lector del archivo
+			lector.close();
+		}
+		catch (FileNotFoundException ex){//Si no existe el archivo lanza una excepcion
+			System.out.println("No hay archivo");
+		}
+	}
+	public void notas(String ruta) throws ParseException, IOException{
+		//String ruta = "/Users/danielvilar2/Desktop/notas.txt";
+		File archivo = new File (ruta);
+		String linea=null;
+
+		try{
+			FileReader lector = new FileReader(archivo);
+			BufferedReader buf = new BufferedReader(lector);
+			while ((linea = buf.readLine()) != null)
+			{
+				notas.add(linea);
 			}
 			buf.close();//Cerramos el buffer y el lector del archivo
 			lector.close();

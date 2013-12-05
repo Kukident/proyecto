@@ -90,13 +90,31 @@ public class avisos {
 					}
 					i++;
 				}
+				if (idg.equals("-1")){
+					return true;
+				}
+				else{
 				avisolinea="Grupo inexistente ";
 				return false;
+				}
 			}
 			j++;
 		}
 		avisolinea=avisolinea.concat("Materia inexistente ");
 		return false;
+	}
+
+	public boolean grupoyaasignado(String idm, String idg){
+		int size=profesor.listadodoce.size();
+		int j=0;
+		while (j<size){
+			if (profesor.listadodoce.get(j).trim().equals(idm+" "+idg)){
+				avisolinea=avisolinea.concat("Grupo ya asignado ");
+				return false;
+			}
+			j++;
+		}
+		return true;
 	}
 
 	public boolean alumnoinex(Integer idp, Map<Integer, persona> personas){
