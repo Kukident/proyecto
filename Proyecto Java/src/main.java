@@ -2,9 +2,10 @@ import java.io.IOException;
 import java.text.ParseException;
 //Faltan avisos para solape
 //Creo dos veces el objeto escribir una en avisos y otra en ejecucuion. PUEDE GENERAR PROBLEMAS A LA HORA DE IMPRIMIR
+import java.util.ArrayList;
+import java.util.List;
 
 public class main {
-
 	public static void main(String[] args) throws ParseException, IOException {
 		leer leer = new leer();
 		ejecucion ejecucion = new ejecucion();
@@ -12,6 +13,37 @@ public class main {
 		leer.personas();//Lee el archivo personas y guarda profesores y alumnos en un map con key=id
 		leer.materias();//Lee el archivo materias y las guarda en un map con key=id
 		leer.ejecucion();//Lee el archivo con las ordenes a realizar y las guarda en una lista
+
+
+		List<Integer> ids = new ArrayList<Integer>(leer.getpersonas().keySet());
+		int j=0,i=0,size;
+		size=leer.getejecucion().size();
+		while (j<size){
+			if (separar.espacios(leer.getejecucion().get(j))[0].equals("InsertaPersona")){
+				ejecucion.insertapersona((separar.comillas(leer.getejecucion().get(j))), leer.getpersonas());
+			}
+			else if (separar.espacios(leer.getejecucion().get(j))[0].equals("Asigna")){
+				ejecucion.asignarcargadocente((separar.espacios(leer.getejecucion().get(j))), leer.getpersonas(), leer.getmaterias());
+			}
+			else if (separar.espacios(leer.getejecucion().get(j))[0].equals("Matricula")){
+				ejecucion.matricularalumno((separar.espacios(leer.getejecucion().get(j))), leer.getpersonas(), leer.getmaterias());
+			}
+			else if (separar.espacios(leer.getejecucion().get(j))[0].equals("Evalua")){
+				ejecucion.evaluarmateria((separar.espacios(leer.getejecucion().get(j))), leer.getpersonas(), leer.getmaterias());
+			}
+			else if (separar.espacios(leer.getejecucion().get(j))[0].equals("ObtenCalendario")){
+				ejecucion.obtenercalendario((separar.espacios(leer.getejecucion().get(j))), leer.getpersonas(), leer.getmaterias());
+			}
+			else if (separar.espacios(leer.getejecucion().get(j))[0].equals("OrdenaProfesorPorCargaDocente")){
+				ejecucion.ordenarporcargadocente((separar.espacios(leer.getejecucion().get(j))), leer.getpersonas(), leer.getmaterias());
+			}
+			j++;
+		}
+		escribir.personas(leer.getpersonas());
+	}
+}
+
+/*
 
 		//System.out.println(((alumno) leer.getpersonas().get(2)).getnota());
 
@@ -49,7 +81,7 @@ public class main {
 
 
 
-		//System.out.println(leer.getpersonas().get(0).getnombre());
 	}
 }
 
+ */
