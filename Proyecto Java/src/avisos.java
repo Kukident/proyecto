@@ -180,4 +180,11 @@ public class avisos {
 		}
 		return true;
 	}
+	public boolean alumnosinasignaciones(Integer idp, Map<Integer, persona> personas){
+		if (((alumno) personas.get(idp)).getdocerec().get(0).equals("")){
+			avisolinea=avisolinea.concat("Alumno sin asignaciones ");
+			return false;
+		}
+		return true;
+	}
 }

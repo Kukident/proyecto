@@ -2,13 +2,18 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 
 public class ejecucion {
 	static int id=1;
 	static avisos avisos = new avisos();
+	escribir escribir = new escribir();
+
 
 	public void insertapersona (String[] str, Map<Integer, persona> mapa){
 		String str1[];
@@ -110,25 +115,30 @@ public class ejecucion {
 			}
 		}
 	}
-	public void obtenercalendario(String[] str, Map<Integer, persona> personas, Map<Integer, materia> materias){
-		List<String> horas = new ArrayList<String>();
+	public void obtenercalendario(String[] str, Map<Integer, persona> personas, Map<Integer, materia> materias) throws ParseException{
+		SortedMap<Date,Integer> horas = new TreeMap<Date,Integer>();
+		fechas fechas = new fechas();
 
 		int idp=Integer.parseInt(str[1]);
 		int sizedocerec,sizegrupos,j=0,i=0,idm,idg;
-		System.out.println(((alumno) personas.get(idp)).getdocerec());
-		sizedocerec=((alumno) personas.get(idp)).getdocerec().size();
-		while (j<sizedocerec){
-			idm=Integer.parseInt(separar.espacios(((alumno) personas.get(idp)).getdocerec().get(j))[0]);
-			idg=Integer.parseInt(separar.espacios(((alumno) personas.get(idp)).getdocerec().get(j))[1]);
-			sizegrupos=materias.get(idm).getgrupos().size();
-			while (i<sizegrupos){
-				if (Integer.parseInt(separar.espacios(materias.get(idm).getgrupos().get(i))[0])==idg){
-					//Funcion escribir
+		if ((avisos.alumnoinex(idp, personas)&&avisos.alumnosinasignaciones(idp, personas))&avisos.imp()){
+			System.out.println(((alumno) personas.get(idp)).getdocerec());
+			sizedocerec=((alumno) personas.get(idp)).getdocerec().size();
+			while (j<sizedocerec){
+				idm=Integer.parseInt(separar.espacios(((alumno) personas.get(idp)).getdocerec().get(j))[0]);
+				idg=Integer.parseInt(separar.espacios(((alumno) personas.get(idp)).getdocerec().get(j))[1]);
+				sizegrupos=materias.get(idm).getgrupos().size();
+				while (i<sizegrupos){
+					if (Integer.parseInt(separar.espacios(materias.get(idm).getgrupos().get(i))[0])==idg){
+						horas.put(fechas.stringadate(separar.espacios(materias.get(idm).getgrupos().get(i))),idm);
+					}
+					i++;
 				}
-				i++;
+				i=0;
+				j++;
 			}
-			j++;
+			System.out.println(horas);
+			escribir.horario(str, horas, materias);
 		}
-
 	}
 }

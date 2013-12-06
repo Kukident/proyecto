@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.text.ParseException;
 //Faltan avisos para solape
+//Creo dos veces el objeto escribir una en avisos y otra en ejecucuion. PUEDE GENERAR PROBLEMAS A LA HORA DE IMPRIMIR
 
 public class main {
 
