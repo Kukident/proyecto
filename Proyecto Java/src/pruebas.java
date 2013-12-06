@@ -11,6 +11,8 @@ public class pruebas {
 		SimpleDateFormat df = new SimpleDateFormat("EEEEEEEEEE H");
 		String horas="9";
 		String dia="Lunes 9";
+		int pru=8;
+		System.out.println(Integer.toString(pru));
 		
 		Date d1=df.parse(dia);
 		String dia1=df.format(d1);

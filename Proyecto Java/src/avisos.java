@@ -22,16 +22,17 @@ public class avisos {
 		avisolinea="";
 		return true;
 	}
-	public boolean fechaingreso(String str){
-		Calendar calendar = new GregorianCalendar();
+	public boolean fechaingreso(String str,String str1){
 		String separado[];
+		String separado1[];
 		int a–onac;
-		int a–oact;
+		int a–oing;
 		int edad;
 		separado=separar.barras(str);
+		separado1=separar.barras(str1);
 		a–onac=Integer.parseInt(separado[2]);
-		a–oact=calendar.get(Calendar.YEAR);
-		edad=a–oact-a–onac;
+		a–oing=Integer.parseInt(separado1[2]);
+		edad=a–oing-a–onac;
 		if (edad>=15 && edad<=65){
 			return true;
 		}
@@ -94,8 +95,8 @@ public class avisos {
 					return true;
 				}
 				else{
-				avisolinea="Grupo inexistente ";
-				return false;
+					avisolinea="Grupo inexistente ";
+					return false;
 				}
 			}
 			j++;
@@ -186,5 +187,18 @@ public class avisos {
 			return false;
 		}
 		return true;
+	}
+	public boolean noprofesores(Map<Integer, persona> personas){
+		List<Integer> ids = new ArrayList<Integer>(personas.keySet());
+		int size, j=0;
+		size=ids.size();
+		while (j<size){
+			if (personas.get(ids.get(j)).gettipo().equals("profesor")){
+				return true;
+			}
+			j++;
+		}
+		avisolinea=avisolinea.concat("No hay profesores ");
+		return false;
 	}
 }

@@ -22,13 +22,13 @@ public class ejecucion {
 		str1=separar.espacios(str[0]);
 		str2=separar.espacios(str[2]);
 
-		if(str1[1].equals("alumno")&&(avisos.fechaingreso(str2[1])&avisos.notamedia(Integer.parseInt(str2[3].trim()))&avisos.imp())){
+		if(str1[1].equals("alumno")&&(avisos.fechaingreso(str2[1],str2[2])&avisos.notamedia(Integer.parseInt(str2[3].trim()))&avisos.imp())){
 			mapa.put(getid(mapa),new alumno(str[1], getid(mapa),str2[1],str1[1],str2[2],Integer.parseInt(str2[3].trim()),"", ""));
 		}
 		if(str1[1].equals("profesor")){
 			str3=separar.espacios(str[4]);
 			if (avisos.horasincorr(Integer.parseInt(str3[1].trim()))&avisos.imp()){
-				mapa.put(getid(mapa), new profesor(str[1], getid(mapa),str2[0],str[1],str[3],Integer.parseInt(str3[1].trim()),""));
+				mapa.put(getid(mapa), new profesor(str[1], getid(mapa),str2[1],str1[1],str[3],Integer.parseInt(str3[1].trim()),""));
 			}
 		}
 	}
@@ -139,6 +139,28 @@ public class ejecucion {
 			}
 			System.out.println(horas);
 			escribir.horario(str, horas, materias);
+		}
+	}
+	public void ordenarporcargadocente(String[] str, Map<Integer, persona> personas, Map<Integer, materia> materias){
+		List<String> horas = new ArrayList<String>();
+		List<Integer> ids = new ArrayList<Integer>(personas.keySet());
+		int j=0,size;
+		if (avisos.noprofesores(personas)&avisos.imp()){
+			size=personas.size();
+			while (j<size){
+				if (personas.get(ids.get(j)).gettipo().equals("profesor")){
+					if (((profesor) personas.get(ids.get(j))).getdoceimp().get(0).equals("")){
+						horas.add("0"+" "+ids.get(j));
+					}
+					else{
+						horas.add(Integer.toString(((profesor) personas.get(ids.get(j))).getdoceimp().size())+" "+ids.get(j));
+					}
+				}
+				j++;
+			}
+			Collections.sort(horas,new compcargadoce());
+			System.out.println(horas);
+			escribir.cargadocente(str, personas, horas);
 		}
 	}
 }
