@@ -42,7 +42,7 @@ public class avisos {
 		}
 	}
 
-	public boolean notamedia(Integer nota){
+	public boolean notamedia(Double nota){
 		if (nota<=10 && nota>=0 ){
 			return true;
 		}
