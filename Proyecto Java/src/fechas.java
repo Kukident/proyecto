@@ -20,7 +20,7 @@ public class fechas {
 			break;
 		}
 		case 'X':{
-			dia="miercoles";
+			dia="miércoles";
 			break;
 		}
 		case 'J':{
@@ -34,12 +34,19 @@ public class fechas {
 		}
 		dia=dia+" "+str[2];
 		Date d1=df.parse(dia);
+		System.out.println(d1);
 		return d1;
 	}
 	public String dateastring(Date d1){
+		String letras;
 		String str[]=separar.espacios(df.format(d1));
-		char letra=str[0].charAt(0);
-		String letras=Character.toString(letra).toUpperCase();
+		if (str[0].equals("miércoles")){
+			letras="X";
+		}
+		else {
+			char letra=str[0].charAt(0);
+			letras=Character.toString(letra).toUpperCase();
+		}
 		return letras+" "+str[1];
 	}
 }

@@ -201,4 +201,20 @@ public class avisos {
 		avisolinea=avisolinea.concat("No hay profesores ");
 		return false;
 	}
+	public void comandoincorrecto(String str[]){
+		int j=0;
+		avisolinea=avisolinea.concat("Comando incorrecto: ");
+		while(j<str.length){
+			avisolinea=avisolinea.concat(str[j]+" ");
+			j++;
+		}
+	}
+	public boolean fechacorrecta(String str){
+		String separado[];
+		separado=separar.barras(str);
+		if(Integer.parseInt(separado[1])>12||Integer.parseInt(separado[0])>31){
+			return false;
+		}
+		return true;
+	}
 }

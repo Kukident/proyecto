@@ -9,9 +9,10 @@ public class compcargadoce implements java.util.Comparator<String>{
 		int idp1=Integer.parseInt(separar.espacios(str1)[1]);
 		int idp2=Integer.parseInt(separar.espacios(str2)[1]);
 
+		
 		if (horas1==horas2){
 			return ((Integer) idp1).compareTo(idp2);
 		}
-		return -((Integer) horas1).compareTo(horas2);
+		return ((Integer) horas1).compareTo(horas2);
 	}
 }

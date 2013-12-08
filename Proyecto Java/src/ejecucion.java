@@ -19,17 +19,36 @@ public class ejecucion {
 		String str1[];
 		String str2[];
 		String str3[];
-		str1=separar.espacios(str[0]);
-		str2=separar.espacios(str[2]);
+		if (str.length==3||str.length==5){
+			str1=separar.espacios(str[0]);
+			str2=separar.espacios(str[2]);
 
-		if(str1[1].equals("alumno")&&(avisos.fechaingreso(str2[1],str2[2])&avisos.notamedia(Double.parseDouble(str2[3].trim()))&avisos.imp())){
-			mapa.put(getid(mapa),new alumno(str[1], getid(mapa),str2[1],str1[1],str2[2],Double.parseDouble(str2[3].trim()),"", ""));
-		}
-		if(str1[1].equals("profesor")){
-			str3=separar.espacios(str[4]);
-			if (avisos.horasincorr(Integer.parseInt(str3[1].trim()))&avisos.imp()){
-				mapa.put(getid(mapa), new profesor(str[1], getid(mapa),str2[1],str1[1],str[3],Integer.parseInt(str3[1].trim()),""));
+
+			if(str1[1].equals("alumno")&&(avisos.fechaingreso(str2[1],str2[2])&avisos.notamedia(Double.parseDouble(str2[3].trim()))&avisos.imp())){
+				if(avisos.fechacorrecta(str2[1])&avisos.fechacorrecta(str2[2])){
+					mapa.put(getid(mapa),new alumno(str[1], getid(mapa),str2[1],str1[1],str2[2],Double.parseDouble(str2[3].trim()),"", ""));
+				}
+				else{
+					avisos.comandoincorrecto(str);
+					avisos.imp();
+				}
 			}
+			if(str1[1].equals("profesor")){
+				str3=separar.espacios(str[4]);
+				if (avisos.fechacorrecta(str2[1])){
+					if (avisos.horasincorr(Integer.parseInt(str3[1].trim()))&avisos.imp()){
+						mapa.put(getid(mapa), new profesor(str[1], getid(mapa),str2[1],str1[1],str[3],Integer.parseInt(str3[1].trim()),""));
+					}
+				}
+				else{
+					avisos.comandoincorrecto(str);
+					avisos.imp();
+				}
+			}
+		}
+		else {
+			avisos.comandoincorrecto(str);
+			avisos.imp();
 		}
 	}
 	private Integer getid(Map<Integer, persona> mapa){
@@ -86,16 +105,19 @@ public class ejecucion {
 			while (j<sizenot){
 				idp=Integer.parseInt(separar.espacios(leer.getnotas().get(j).trim())[0]);
 				sizemat=((alumno) personas.get(idp)).getdocerec().size();
-				nota=Integer.parseInt(separar.espacios(leer.getnotas().get(j).trim())[1]);
+				nota=Double.parseDouble(separar.espacios(leer.getnotas().get(j).trim())[1]);
 				if (nota>=5){
 					while (i<sizemat){
 						if (Integer.parseInt(separar.espacios(((alumno) personas.get(idp)).getdocerec().get(i))[0])==idm){
 							((alumno) personas.get(idp)).getdocerec().remove(i);
 							((alumno) personas.get(idp)).getaprob().add(str[1]);
-							notamedia=((((alumno) personas.get(idp)).getnota())+nota)/(((alumno) personas.get(idp)).getaprob().size());
+							if (((alumno) personas.get(idp)).getdocerec().isEmpty()){
+								((alumno) personas.get(idp)).getdocerec().add("");
+							}
 							if (((alumno) personas.get(idp)).getaprob().get(0).equals("")){
 								((alumno) personas.get(idp)).getaprob().remove(0);
 							}
+							notamedia=((((alumno) personas.get(idp)).getnota())+nota)/(((alumno) personas.get(idp)).getaprob().size());
 							((alumno) personas.get(idp)).putnota(notamedia);
 							break;
 						}
@@ -111,6 +133,7 @@ public class ejecucion {
 						i++;
 					}
 				}
+				i=0;
 				j++;
 			}
 		}

@@ -40,7 +40,7 @@ public class leer {
 		String grupos=null;
 		int lineas=0;
 
-		String ruta = "/Users/danielvilar2/Downloads/pruebasProyectoPII/testAvisos1/entrada/materias.txt";
+		String ruta = "/Users/danielvilar2/Downloads/pruebasProyectoPII/testCorrectaEjecucion/entrada/materias.txt";
 		File archivo = new File (ruta);
 		String linea=null;
 
@@ -90,7 +90,7 @@ public class leer {
 
 	public void ejecucion() throws ParseException, IOException{
 
-		String ruta = "/Users/danielvilar2/Downloads/pruebasProyectoPII/testAvisos1/entrada/ejecucion.txt";
+		String ruta = "/Users/danielvilar2/Downloads/pruebasProyectoPII/testCorrectaEjecucion/entrada/ejecucion.txt";
 		File archivo = new File (ruta);
 		String linea=null;
 
@@ -128,7 +128,7 @@ public class leer {
 		int lineas=0;
 
 
-		String ruta = "/Users/danielvilar2/Downloads/pruebasProyectoPII/testAvisos1/entrada/personas.txt";
+		String ruta = "/Users/danielvilar2/Downloads/pruebasProyectoPII/testCorrectaEjecucion/entrada/personas.txt";
 		File archivo = new File (ruta);
 		String linea=null;
 
@@ -215,7 +215,6 @@ public class leer {
 		}
 	}
 	public void notas(String ruta) throws ParseException, IOException{
-		//String ruta = "/Users/danielvilar2/Desktop/notas.txt";
 		File archivo = new File (ruta);
 		String linea=null;
 

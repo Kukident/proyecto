@@ -34,7 +34,7 @@ public class main {
 			else if (separar.espacios(leer.getejecucion().get(j))[0].equals("ObtenCalendario")){
 				ejecucion.obtenercalendario((separar.espacios(leer.getejecucion().get(j))), leer.getpersonas(), leer.getmaterias());
 			}
-			else if (separar.espacios(leer.getejecucion().get(j))[0].equals("OrdenaProfesorPorCargaDocente")){
+			else if (separar.espacios(leer.getejecucion().get(j))[0].equals("OrdenaProfesoresPorCargaDocente")){
 				ejecucion.ordenarporcargadocente((separar.espacios(leer.getejecucion().get(j))), leer.getpersonas(), leer.getmaterias());
 			}
 			j++;
