@@ -34,7 +34,6 @@ public class fechas {
 		}
 		dia=dia+" "+str[2];
 		Date d1=df.parse(dia);
-		System.out.println(d1);
 		return d1;
 	}
 	public String dateastring(Date d1){

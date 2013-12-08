@@ -29,7 +29,6 @@ public class escribir {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(str[2]));
 			size=listahoras.size();
 			while (j<size){
-				System.out.println("////"+materias.get(horas.get(listahoras.get(j))).getid()+"\n"+materias.get(horas.get(listahoras.get(j))).getmateria()+"\n"+fechas.dateastring(listahoras.get(j)));
 				bw.write(materias.get(horas.get(listahoras.get(j))).getid()+"\n"
 						+materias.get(horas.get(listahoras.get(j))).getmateria()+"\n"+fechas.dateastring(listahoras.get(j))+"\n*\n");
 				j++;
