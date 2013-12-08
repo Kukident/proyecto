@@ -2,14 +2,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-
-
+/**Crea alumnos y almacena sus datos */
 public class alumno extends persona {
 	DateFormat df= new SimpleDateFormat("dd/MM/yyyy");
-	String fechaing; //Fecha de ingreso
-	double nota; //Nota media
-	String aprob; //Lista de asignaturas aprobadas
-	String docerec; //Lista de asignaturas matriculadas
+	String fechaing; 
+	double nota; 
+	String aprob; 
+	String docerec;
 	List <String> listadocrec= new ArrayList<String>();
 	List <String> listadoaprob= new ArrayList<String>();
 	separar separar=new separar();
@@ -17,7 +16,7 @@ public class alumno extends persona {
 	String [] separados;
 	int longcadena=0;
 
-
+	/**Crea a alumno con los datos*/
 	public alumno(String nombre,int id, String fechanac, String tipo, String fechaing, double nota, String aprob, String docerec){
 		this.nombre=nombre;
 		this.id=id;
@@ -35,25 +34,27 @@ public class alumno extends persona {
 			separar.puntosycomas(docerec,listadocrec);
 		}
 	}
-
+	/**Devuelve fecha de ingreso*/
 	public String getfechaing(){
 		return fechaing;
 	}
-
+	/**Devuelve nota*/
 	public double getnota(){
 		return nota;
 	}
-
+	/**Devuelve asignatruas aprobadas*/
 	public List<String> getaprob(){
 		return listadoaprob;
 	}
-
+	/**Devuelve docencia recibida*/
 	public List<String> getdocerec(){
 		return listadocrec;
 	}
+	/**Guarda docencia recibida*/
 	public void putdocrec(String str1, String str2){
 		this.listadocrec.add(str1+" "+str2);	
 	}
+	/**Guarda nota*/
 	public void putnota(double nota){
 		this.nota=nota;
 	}

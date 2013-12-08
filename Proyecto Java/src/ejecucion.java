@@ -7,14 +7,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
-
-
+/**Ejecuta los distintos comandos del archivo ejecucion*/
 public class ejecucion {
 	static int id=1;
 	static avisos avisos = new avisos();
 	escribir escribir = new escribir();
 
-
+	/**Inserta una nueva persona en el sistema
+	 * @param str Contiene la linea ejecucion separa por comillas
+	 * @param mapa Map con las todas las personas*/
 	public void insertapersona (String[] str, Map<Integer, persona> mapa){
 		String str1[];
 		String str2[];
@@ -51,6 +52,9 @@ public class ejecucion {
 			avisos.imp();
 		}
 	}
+	/**Asigna un nuevo id a la persona indicada, el id sera el primero disponible por orden
+	 * @param mapa Map con todas las personas
+	 * @return id Devuelve el primer id disponible por orden*/
 	private Integer getid(Map<Integer, persona> mapa){
 		List<Integer> ids = new ArrayList<Integer>(mapa.keySet());
 		Collections.sort(ids);
@@ -65,6 +69,10 @@ public class ejecucion {
 		}
 		return id;
 	}
+	/**Asigna carga docente a un profesor dado
+	 * @param str Contiene la linea de ejecucion separa por espacios
+	 * @param personas Map con todas las personas
+	 * @param materias Map con todas las materias*/
 	public void asignarcargadocente(String[] str, Map<Integer, persona> personas, Map <Integer,materia> materias){
 		int idp,idm;
 		if (str.length==4){
@@ -84,6 +92,10 @@ public class ejecucion {
 			avisos.imp();
 		}
 	}
+	/**Matricula a un alumno en una materia
+	 * @param str Contiene la linea de ejecucion separa por espacios
+	 * @param personas Map con todas las personas
+	 * @param materias Map con todas las materias*/
 	public void matricularalumno(String[] str, Map<Integer, persona> personas, Map <Integer,materia> materias){
 		int idp,idm;
 		if (str.length==4){
@@ -103,6 +115,12 @@ public class ejecucion {
 			avisos.imp();
 		}
 	}
+	/**Evalua una materia
+	 * @param str Contiene la linea de ejecucion separa por espacios
+	 * @param personas Map con todas las personas
+	 * @param materias Map con todas las materias
+	 * @throws ParseException
+	 * @throws IOException*/
 	public void evaluarmateria(String[] str, Map<Integer, persona> personas, Map<Integer, materia> materias) throws ParseException, IOException{
 		int idm,idp, j=0, i=0, sizenot, sizemat;
 		double nota, notamedia;
@@ -159,7 +177,13 @@ public class ejecucion {
 			avisos.imp();
 		}
 	}
-	public void obtenercalendario(String[] str, Map<Integer, persona> personas, Map<Integer, materia> materias) throws ParseException{
+	/**Genera un horario para el alumno dado
+	 * @param str Contiene la linea de ejecucion separa por espacios
+	 * @param personas Map con todas las personas
+	 * @param materias Map con todas las materias
+	 * @throws ParseException
+	 * @throws IOException */
+	public void obtenercalendario(String[] str, Map<Integer, persona> personas, Map<Integer, materia> materias) throws ParseException, IOException{
 		SortedMap<Date,Integer> horas = new TreeMap<Date,Integer>();
 		fechas fechas = new fechas();
 		if(str.length==3){
@@ -188,7 +212,12 @@ public class ejecucion {
 			avisos.imp();
 		}
 	}
-	public void ordenarporcargadocente(String[] str, Map<Integer, persona> personas, Map<Integer, materia> materias){
+	/**Genera una lista con los profesores ordenados por carga docente
+	 * @param str Contiene la linea de ejecucion separa por espacios
+	 * @param personas Map con todas las personas
+	 * @param materias Map con todas las materias
+	 * @throws IOException */
+	public void ordenarporcargadocente(String[] str, Map<Integer, persona> personas, Map<Integer, materia> materias) throws IOException{
 		List<String> horas = new ArrayList<String>();
 		List<Integer> ids = new ArrayList<Integer>(personas.keySet());
 		int j=0,size;

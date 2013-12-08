@@ -8,30 +8,32 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-
+/**Leer los distintos archivos .txt*/
 public class leer {
 	Map<Integer,materia> mapmateria= new HashMap<Integer,materia>();
 	Map<Integer,persona> mappersona= new HashMap<Integer,persona>();
 	List <String> listaejec = new ArrayList <String>();
 	List <String> notas = new ArrayList <String>();
 
-	
-	
+	/**Devuelve un map de personas, con key=id y value=personas*/
 	public Map<Integer, persona> getpersonas(){
 		return mappersona;
 	}
+	/**Devuelve un map de materias, con key=id y value=materias*/
 	public Map<Integer, materia> getmaterias(){
 		return mapmateria;
 	}
-
+	/**Devuelve una lista con las ejecuciones*/
 	public List<String> getejecucion(){
 		return listaejec;
 	}
+	/**Devuelve una lista con las notas*/
 	public List<String> getnotas(){
 		return notas;
 	}
-
+	/**Lee el archivo materias y las guarda en un map
+	 * @throws ParseException
+	 * @throws IOException*/
 	public void materias() throws ParseException, IOException{
 		int id=0;
 		String materia=null;
@@ -87,7 +89,9 @@ public class leer {
 			System.out.println("No hay archivo");
 		}
 	}
-
+	/**Lee el archivo de ejecucion y lo guarda en un listado
+	 * @throws ParseException
+	 * @throws IOExcepton*/
 	public void ejecucion() throws ParseException, IOException{
 
 		String ruta = "/Users/danielvilar2/Downloads/pruebasProyectoPII/testCorrectaEjecucion/entrada/ejecucion.txt";
@@ -108,7 +112,9 @@ public class leer {
 			System.out.println("No hay archivo");
 		}
 	}
-
+	/**Lee el archivo personas y lo guarda en un map
+	 * @throws ParseException
+	 * @throws IOException*/
 	public void personas() throws ParseException, IOException{
 		String nombre=null;
 		int id=0;
@@ -119,8 +125,8 @@ public class leer {
 		String dep=null;
 		int horasig=0;
 		String aprob=null;
-		String docerec=null; //Lista de asignaturas matriculadas
-		String doceimp=null; //Lista de docencia impartida
+		String docerec=null; 
+		String doceimp=null;
 
 
 		String cad="alumno";
@@ -214,6 +220,10 @@ public class leer {
 			System.out.println("No hay archivo");
 		}
 	}
+	/**Lee el archivo con las notas y lo guarda en una lista
+	 * @param ruta Ruta donde se encuentra el archivo a leer
+	 * @throws ParseException
+	 * @throws IOException*/
 	public void notas(String ruta) throws ParseException, IOException{
 		File archivo = new File (ruta);
 		String linea=null;

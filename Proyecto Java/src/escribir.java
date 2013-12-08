@@ -6,11 +6,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
-import java.util.TreeMap;
-
+/**Escribe en los distintos ficheros de salida*/
 
 public class escribir {
-
+	/**Imprime en el archivo los avisos correspondientes a cada ejecucion
+	 * @param str Linea con todos los avisos a escribir
+	 * @throws IOException*/
 	public void avisos(String str) throws IOException {
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter("/Users/danielvilar2/Desktop/avisos.txt", true));
@@ -21,7 +22,12 @@ public class escribir {
 			e.printStackTrace();
 		}
 	}
-	public void horario(String[] str,SortedMap<Date,Integer> horas, Map<Integer, materia> materias){
+	/**Imprime el horario del alumno
+	 * @param str Ruta en la que se ha de guardar el horario
+	 * @param horas Map con las fechas y horas ordenadas
+	 * @param materias Map con todas las materias
+	 * @throws IOException*/
+	public void horario(String[] str,SortedMap<Date,Integer> horas, Map<Integer, materia> materias) throws IOException{
 		List<Date> listahoras = new ArrayList<Date>(horas.keySet());
 		fechas fechas = new fechas();
 		int size,j=0;
@@ -40,7 +46,12 @@ public class escribir {
 			e.printStackTrace();
 		}
 	}
-	public void cargadocente(String[] str, Map<Integer, persona> personas, List<String> horas){
+	/**Imprime el listado de profesores ordenados por carga docente
+	 * @param str Ruta en la que se ha de guardar el listado
+	 * @param personas Map con todas las personas
+	 * @param horas Listado ordenado con las horas y los ids de los profesores
+	 * @throws IOException*/
+	public void cargadocente(String[] str, Map<Integer, persona> personas, List<String> horas) throws IOException{
 		int size,j=0,i=0,sizedoc;
 		try{
 			BufferedWriter bw = new BufferedWriter(new FileWriter(str[1]));
@@ -77,7 +88,10 @@ public class escribir {
 			e.printStackTrace();
 		}
 	}
-	public void personas(Map<Integer, persona> personas){
+	/**Imprime el archivo de personas con las personas guardadas en el map
+	 * @param personas Map con todas las personas
+	 * @throws IOException*/
+	public void personas(Map<Integer, persona> personas) throws IOException{
 		List<Integer> ids = new ArrayList<Integer>(personas.keySet());
 		int size,sizeaprob,sizedocerec,sizedoc,j=0,i=0,tipo;
 		size=personas.size();
